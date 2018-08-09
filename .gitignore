@@ -1,0 +1,13 @@
+# Executable
+*.exe
+/debug
+
+# Go
+/vendor/
+
+# Other
+/id_rsa*
+/data
+/tmp*
+/*.bat
+/.idea
