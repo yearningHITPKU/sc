@@ -1,4 +1,4 @@
-package sc
+package scapi
 
 import (
 	"fmt"
