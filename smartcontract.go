@@ -16,7 +16,6 @@ func StartContract(arg string) (outStr string, err error) {
 		fmt.Println(err)
 	}
 	outStr = string(out)
-	fmt.Print("cmd output:", outStr)
 	return
 }
 
@@ -35,6 +34,5 @@ func ExecContract(arg string) (outStr string, err error) {
 		fmt.Println(err)
 	}
 	outStr = string(out)
-	fmt.Print("cmd output:", string(out))
 	return
 }
