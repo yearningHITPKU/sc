@@ -1,6 +1,31 @@
-# sc
-1.将yjs.jar放到你的代码执行目录下，命令行下执行：java -classpath yjs.jar com.yancloud.sc.ContractManager
+#SC
 
-2.签署合约调用StartContract接口，参数例子："{\\"type\\":\\"Data\\",\\"id\\":\\"656564\\"}"
+1.初始化WebSocketClient结构体，比如：
 
-3.执行合约调用ExecContract接口，参数例子："{\\"arg\\":\\"http://www.baidu.com\",\"contractID\":\"656564\"}"
+```
+h := &Handler{
+}
+wsc := sc.WebSocketClient{
+   URL:     url.URL{Scheme: "ws", Host: "localhost:8080", Path: "/SCIDE/SCExecutor"},
+   Handler: h,
+}
+```
+
+2.启动websocket客户端
+
+```
+wsc.Start()
+```
+
+3.向服务端发消息
+
+```
+wsc.Send(sc.StartContract{
+   Action:"startContract",
+   Contractid: "66668",
+   Path: "Hello",
+   Script: "contract abc{\n    export function main(arg){\n        point = JSON.parse(arg);\n        var s = 0;\n        print(point[0].score);\n        print(point.length);\n        for (var i=0;i<point.length;i++){\n            s+=point[i].score/1.0;\n        }\n        print(\"ss= \"+s);\n        return s;\n    }\n}",
+   Type: "",
+   Onwer: "",
+})
+```
